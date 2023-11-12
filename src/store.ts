@@ -1,11 +1,11 @@
 import { create } from 'zustand';
 
 type AnsStore = {
-  prevAns: string[]; // Replace with your actual type
-  setPrevAns: (items: string[]) => void;
+  prevMsgs: string[]; // Replace with your actual type
+  setPrevMsgs: (items: string[]) => void;
 };
 
 export const useAns = create<AnsStore>()((set) => ({
-  prevAns: [], // Initial state
-  setPrevAns: (items: string[]) => set({ prevAns: items }), // Corrected line
+  prevMsgs: [], // Initial state
+  setPrevMsgs: (items: string[]) => set({ prevMsgs: items }), // Corrected line
 }));
