@@ -4,18 +4,16 @@ import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css'
 import { MainContainer, ChatContainer, MessageList, TypingIndicator, Message, MessageInput } from '@chatscope/chat-ui-kit-react'
 import { useStore } from 'zustand';
 
-const API_KEY = "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";
+const API_KEY = "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";
 
 function App() {
-
-    const [msgs, setMsgs] = useStore()
     const [typing, setTyping] = useState(false);
     const [messages, setMessages] = useState([
         {
-            message: "I am Ether",
+            message: "I am Ether! Your Personal Mental Health Companion. Answer the questions below to get started!\nHow are you doing today?",
             sender: "ChatGPT!"
-        }
-    ])
+        }
+    ])
 
     const handleSend = async (message: any) => {
         const newMessage = {
@@ -44,7 +42,7 @@ function App() {
 
         const systemMessage = {
             role: "system",
-            content: "You are my personal mental health companion - Ether"
+            content: "Ask the questions to me 1 by 1 first. You are Ether, My personal mental health companion. You are responsible to assess my mental health and suggest me useful resources on based of the short questions that you will ask me The questions are:   Did you work on your hobbies today? Rate your concentration level today! How active were you today? How would you rate your appetite today? Please rate your sleep quality today? What is your energy level today? Did you have any suicidal thoughts today? If so, how severe were they? How is your self esteem? How would you rate your hopefulness today?"
         }
         const apiRequestBody = {
             "model": "gpt-3.5-turbo",
@@ -75,16 +73,16 @@ function App() {
     }
     return (
         <>
-            <div className="App">
-                <div style={{ width: "50vw", marginLeft:"auto" }}>
-                    <MainContainer>
+            <div className="App" >
+                <div style={{ width: "100vw", height: '100vh' }}>
+                    <MainContainer >
                         <ChatContainer>
-                            <MessageList typingIndicator={typing ? <TypingIndicator content="Ether is typing" /> : null}>
+                            <MessageList /*style={{backgroundImage: 'url("chatbot-page.png")',backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}*/ typingIndicator={typing ? <TypingIndicator content="Ether is typing" /> : null}>
                                 {messages.map((message, i) => {
-                                    return <Message key={i} model={message as any} />
+                                    return <Message style={{textAlign: 'left'}} key={i} model={message as any} />
                                 })}
                             </MessageList>
-                            <MessageInput placeholder='Type message here' onSend={handleSend}></MessageInput>
+                            <MessageInput  placeholder='Type message here' onSend={handleSend}></MessageInput>
                         </ChatContainer>
                     </MainContainer>
                 </div>
